@@ -69,6 +69,12 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  public Page<BookResponse> searchByAuthor(String author, Pageable pageable) {
+    return bookRepository.findAllByAuthorFullName(author, pageable)
+        .map(bookDtoToEntityMapper::bookEntityToDto);
+  }
+
+  @Override
   public BookResponse update(UpdateBookRequest updateBookRequest) {
     Book book = bookRepository.findById(updateBookRequest.getId()).orElseThrow(
         () -> new EntityNotFoundException(

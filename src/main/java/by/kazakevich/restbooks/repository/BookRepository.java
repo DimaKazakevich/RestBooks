@@ -15,4 +15,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
   Page<Book> findByTitleContainingAndPublishingYear(String title, Long publishingYear,
       Pageable pageable);
+
+  Page<Book> findAllByAuthorFullName(String author, Pageable pageable);
 }

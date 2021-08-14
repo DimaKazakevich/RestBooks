@@ -18,5 +18,7 @@ public interface BookService {
 
   Page<BookResponse> search(SearchBookRequest searchBookRequest, Pageable pageable);
 
+  Page<BookResponse> searchByAuthor(String author, Pageable pageable);
+
   BookResponse update(UpdateBookRequest updateBookRequest);
 }

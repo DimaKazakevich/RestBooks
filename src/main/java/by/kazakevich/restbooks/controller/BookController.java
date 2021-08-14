@@ -1,7 +1,6 @@
 package by.kazakevich.restbooks.controller;
 
 import by.kazakevich.restbooks.dto.request.SearchBookRequest;
-import by.kazakevich.restbooks.dto.request.UpdateBookRequest;
 import by.kazakevich.restbooks.dto.response.BookResponse;
 import by.kazakevich.restbooks.dto.response.MessageResponse;
 import by.kazakevich.restbooks.service.BookService;
@@ -13,9 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,5 +39,11 @@ public class BookController {
   public ResponseEntity<Page<BookResponse>> search(Pageable pageable,
       SearchBookRequest searchBookRequest) {
     return new ResponseEntity<>(bookService.search(searchBookRequest, pageable), HttpStatus.OK);
+  }
+
+  @GetMapping("/author")
+  public ResponseEntity<Page<BookResponse>> searchByAuthor(Pageable pageable,
+      @RequestParam String author) {
+    return new ResponseEntity<>(bookService.searchByAuthor(author, pageable), HttpStatus.OK);
   }
 }
