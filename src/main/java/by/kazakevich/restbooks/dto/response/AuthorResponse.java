@@ -1,12 +1,14 @@
 package by.kazakevich.restbooks.dto.response;
 
-import by.kazakevich.restbooks.domain.Book;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class AuthorResponse {
 
   private Integer id;
