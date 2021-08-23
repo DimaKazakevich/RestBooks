@@ -5,6 +5,16 @@ plugins {
     id 'java'
 }
 
+flyway {
+    url = 'jdbc:mysql://localhost:3306/restbooks?serverTimezone=UTC'
+    user = 'root'
+    password = "$System.env.DB_PASSWORD"
+    schemas = ['restbooks']
+    placeholders = [
+            'classpath': 'db/migration'
+    ]
+}
+
 group = 'by.kazakevich'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
